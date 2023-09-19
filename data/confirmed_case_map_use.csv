@@ -1,4 +1,4 @@
-Country,Total Cases,Population,"Confirmed Case per 10,000 population"
+Country,Total_Cases,Population,"Confirmed Case per 10,000 population"
 USA,"104,196,861","334,805,269",3112.163118
 India,"44,682,784","1,406,631,776",317.6580023
 France,"39,524,311","65,584,518",6026.469692
