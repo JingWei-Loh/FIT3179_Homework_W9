@@ -1,0 +1,36 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "COVID-19 Active Cases (10 Oct 2020)",
+    "width": 800,
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/jnewbery/CartogramMalaysia/master/public/data/malaysia-states.topojson",
+      "format": {"type": "topojson", "feature": "states"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.Name",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/JingWei-Loh/FIT3179_Homework_W9/main/data/malaysia_cases_map_use.csv"
+          },
+          "key": "States",
+          "fields": ["Cases_per_10000"]
+        }
+      },
+      {"calculate": "datum.Cases_per_10000", "as": "Active Cases"}
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "Active Cases",
+        "type": "quantitative",
+        "scale": {"type": "log"}
+      },
+      "tooltip": [
+        {"field": "properties.Name", "type": "nominal", "title": "Country"},
+        {"field": "Active Cases", "type": "quantitative"}
+      ]
+    }
+  }
